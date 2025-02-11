@@ -10,6 +10,7 @@ import Modal from "@/Components/Modal";
 export default function Index({ success = null, projects = [], queryParams }) {
   // console.log(projects)
   queryParams = queryParams || {};
+console.log(projects, " ");
 
   const onFieldChanged = (e) => {
     if (e.target.value) {
@@ -116,7 +117,7 @@ export default function Index({ success = null, projects = [], queryParams }) {
                         <SelectInput
                           defaultValue={queryParams.status}
                           name="status"
-                          className="w-full"
+                          className=""
                           onChange={(e) => onFieldChanged(e)}>
                           <option value="">All</option>
                           <option value="in_progress">In Progress</option>
@@ -152,7 +153,7 @@ export default function Index({ success = null, projects = [], queryParams }) {
                         <td className="px-3 py-2 text-nowrap">{project.due_date}</td>
                         <td className="px-3 py-2 text-nowrap">{project.created_by.name}</td>
                         <td className="px-3 py-2 text-nowrap">{project.updated_by.name}</td>
-                        <td className="px-3 py-2">
+                        <td className="px-3 py-2 text-nowrap">
                           <Link href={route('project.edit', project.id)} className="font-medium text-blue-600 dark:text-blue-500 hover:underline mx-1">Edit</Link>
                           <button onClick={(e) => deleteProject(e, project.id)} className="font-medium text-red-600 dark:text-red-500 hover:underline mx-1">Delete</button>
                         </td>
